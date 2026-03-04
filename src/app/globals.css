@@ -1,0 +1,574 @@
+@import "tailwindcss";
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap"); */
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Bold.ttf") format("ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --primary: #6ec1e4;
+  --secondary: #54595f;
+  --text: #7a7a7a;
+  --accent: #61ce70;
+  --blue: #3e61e4;
+  --dark-blue: #00246e;
+  --gray: #5e676d;
+  --light-gray: #e4e4e4;
+  --black: #000;
+}
+
+@theme {
+  --breakpoint-*: initial; /* reset breakpoints của Tailwind 4 */
+
+  --breakpoint-mobile320: 20rem; /* 320px */
+  --breakpoint-mobile375: 23.4375rem; /* 375px */
+  --breakpoint-mobile414: 25.875rem; /* 414px */
+  --breakpoint-desktopsm: 40rem; /* 640px */
+  --breakpoint-desktopmd: 48rem; /* 768px */
+  --breakpoint-desktoplg: 64rem; /* 1024px */
+  --breakpoint-desktop1080: 67.5rem; /* 1080px */
+  --breakpoint-desktopxl: 90rem; /* 1440px */
+  --breakpoint-desktopxxl: 120rem; /* 1920px */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  /* overflow-x: hidden; */
+}
+
+.content-html {
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.container {
+  margin: 30px 0;
+  padding: 0 40px;
+  width: 100%;
+}
+
+/* Mặc định */
+.sidebar-container {
+  width: 370px;
+  max-width: 100%;
+}
+
+.store-header {
+  display: none;
+}
+
+/* nav[aria-label="Breadcrumb"] > ul > li:nth-of-type(1) {
+  white-space: nowrap;
+} */
+
+.font-slogan {
+  font-family: "Roboto Slab", serif;
+}
+
+.bg-header::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* phủ toàn bộ */
+  background-image: linear-gradient(
+    90deg,
+    var(--dark-blue) 0%,
+    var(--black) 200%
+  );
+  opacity: 0.6;
+  pointer-events: none; /* không ảnh hưởng tương tác */
+}
+
+.embla {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.form-input {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  border: 2px solid #ccc;
+  outline: none;
+  caret-color: #3b82f6;
+}
+
+.form-input:focus {
+  border-color: #3b82f6; /* màu border khi focus */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3); /* optional shadow */
+}
+
+.form-label {
+  padding-top: calc(0.25rem + 1px);
+  padding-bottom: calc(0.25rem + 1px);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+table > tbody > tr > td,
+table > tbody > tr > th,
+table > tfoot > tr > td,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > thead > tr > th {
+  border: 1px solid #ddd !important;
+  padding: 8px;
+  line-height: 1.42857143;
+}
+
+table > tbody > tr:has(td .row-parent) {
+  background-color: var(--color-gray-100);
+  font-weight: 600;
+}
+
+.content-html table {
+  margin: 15px 0;
+  justify-self: anchor-center;
+  /* max-width: 890px; */
+}
+
+.content-html img {
+  justify-self: anchor-center;
+  margin: 15px 0;
+  border-radius: 15px;
+}
+
+.about-content table > tbody > tr > td,
+.about-content table > tbody > tr > th,
+.about-content table > tfoot > tr > td,
+.about-content table > tfoot > tr > th,
+.about-content table > thead > tr > td,
+.about-content table > thead > tr > th {
+  border: 0 !important;
+}
+
+.about-content td {
+  vertical-align: top;
+}
+
+.about-content td:nth-child(2) {
+  padding-left: 30px;
+}
+
+.about-content p:has(img),
+.about-content span:has(img) {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.about-content img {
+  justify-self: anchor-center;
+  margin: 0 !important;
+  border-radius: 15px;
+}
+
+.image-gallery-slide img {
+  height: 560px; /* chiều cao cố định */
+  object-fit: cover; /* giữ tỉ lệ, crop nếu cần */
+  width: 100%; /* full width */
+}
+
+.image-gallery-thumbnail-image {
+  height: 61px;
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus {
+  height: 69px;
+}
+
+/* nav[aria-label="Breadcrumb"] > ul > li:nth-of-type(1) {
+  white-space: nowrap;
+} */
+
+/* .grid.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+} */
+
+.news-container > video {
+  margin-right: 20px;
+}
+
+.banner-slide {
+  height: 500px;
+}
+
+.admin-container {
+  min-height: calc(100vh - 48px - 12px * 2);
+}
+
+.table > thead > tr {
+  background-color: var(--color-blue-100);
+}
+
+.table > thead > tr > th {
+  font-weight: 600;
+  color: var(--color-gray-500);
+  font-size: 15px;
+}
+
+.table > tbody > tr > td {
+  white-space: nowrap;
+  font-size: 0.875rem; /* ~14px */
+  line-height: 1.25rem; /* ~20px */
+  color: var(--color-gray-900);
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+/* Màn hình dưới 1280px */
+@media (max-width: 1280px) {
+  .left-container {
+    width: max-content;
+    max-width: 70%;
+  }
+
+  .sidebar-container {
+    width: 320px;
+    max-width: 100%;
+  }
+
+  .content-html table {
+    max-width: 90%;
+  }
+}
+
+/* Màn hình dưới 1080px */
+@media (max-width: 1080px) {
+  .left-container {
+    width: max-content;
+    max-width: 100%;
+  }
+
+  .sidebar-container {
+    width: 300px;
+    max-width: 100%;
+  }
+
+  .sidebar-item {
+    width: 230px;
+  }
+
+  .content-html table {
+    max-width: 65vw;
+  }
+
+  .about-content img {
+    justify-self: anchor-center;
+    margin: 0 !important;
+    border-radius: 15px;
+  }
+}
+
+/* Màn hình dưới 1024px */
+/* @media (max-width: 1024px) {
+  
+} */
+
+/* Màn hình dưới 768px */
+@media (max-width: 768px) {
+  .news-container {
+    flex-wrap: wrap;
+  }
+
+  .news-container > video {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .news-container > .news-right {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .sidebar-container {
+    max-width: 100%;
+  }
+
+  .grid.grid-cols-2 {
+    grid-template-columns: 1fr; /* mobile: 1 cột */
+  }
+
+  .grid.grid-cols-3 {
+    grid-template-columns: 1fr; /* mobile: 1 cột */
+  }
+
+  .activity-news {
+    margin-top: 30px;
+  }
+
+  .activity-news:nth-of-type(1) {
+    margin-top: 0;
+  }
+
+  .grid.grid-cols-5 {
+    grid-template-columns: 1fr; /* mobile: 1 cột */
+  }
+
+  .listItem {
+    max-width: 90%;
+    justify-self: center;
+  }
+
+  .content-html table {
+    max-width: 90vw;
+  }
+
+  .about-content p:has(img:nth-of-type(2)) img,
+  .about-content span:has(img:nth-of-type(2)) img {
+    height: 80px !important;
+    width: 168px !important;
+  }
+}
+
+/* Màn hình dưới 640px */
+@media (max-width: 640px) {
+  .banner-container,
+  .banner-container .banner-image,
+  .banner-container .banner-slide {
+    height: 450px !important;
+  }
+
+  .not-found-container,
+  .not-found-container .banner-image,
+  .not-found-container .banner-slide {
+    height: 530px !important;
+  }
+
+  .btn-header {
+    padding: 15px 0 !important;
+  }
+
+  .listItem {
+    max-width: 100%;
+  }
+
+  .store-footer {
+    display: none;
+  }
+
+  .store-header {
+    display: flex;
+  }
+
+  .header-title {
+    font-size: 24px !important;
+  }
+
+  .about-content p:has(img:nth-of-type(2)),
+  .about-content span:has(img:nth-of-type(2)) {
+    flex-wrap: wrap;
+  }
+
+  .about-content p:has(img:nth-of-type(2)) img,
+  .about-content span:has(img:nth-of-type(2)) img {
+    height: 100px !important;
+    width: 198px !important;
+  }
+
+  .mx-10.px-4 {
+    margin: 0 !important;
+  }
+
+  .mx-10.space-x-10:has(.left-container) {
+    margin: 0 15px;
+  }
+
+  nav[aria-label="Breadcrumb"] > ul {
+    flex-wrap: wrap;
+  }
+
+  .related-item {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 15px;
+    padding: 0;
+    padding-bottom: 10px;
+  }
+
+  .related-item img {
+    width: 100%;
+    height: fit-content;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.fade-out {
+  animation: fade-out 0.3s ease-in forwards;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+.wiggle {
+  animation: wiggle 0.6s ease-in-out infinite;
+}
+
+.tox .tox-editor-header {
+  z-index: unset !important;
+}
+
+.badge {
+  padding: 12px;
+  border-radius: 8px;
+  background-color: white;
+  column-gap: 12px;
+  box-shadow: 0 4px 12px var(--color-gray-300);
+  display: flex;
+}
+
+.badge h3 {
+  font-size: 16px;
+  color: var(--color-gray-400);
+}
+
+.badge .badge-number {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.badge .badge-icon {
+  padding: 17px;
+  width: 65px;
+  height: 65px;
+  border-radius: 8px;
+}
+
+.badge.badge-info .badge-icon {
+  color: var(--color-blue-500);
+  background-color: var(--color-blue-100);
+}
+
+.badge.badge-purple .badge-icon {
+  color: var(--color-purple-800);
+  background-color: var(--color-purple-100);
+}
+
+.badge.badge-success .badge-icon {
+  color: var(--color-green-600);
+  background-color: var(--color-green-100);
+}
+
+.badge.badge-warning .badge-icon {
+  color: var(--color-yellow-500);
+  background-color: var(--color-yellow-100);
+}
+
+.badge.badge-danger .badge-icon {
+  color: var(--color-red-600);
+  background-color: var(--color-red-100);
+}
+
+.tox-promotion,
+.tox-statusbar__right-container {
+  display: none;
+}
