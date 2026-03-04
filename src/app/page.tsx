@@ -87,7 +87,7 @@ export default function Home() {
   }, []);
 
   const [showLoading, setShowLoading] = useState(
-    !data || !config || data?.popup,
+    !data || !config || !!data?.popup,
   );
   const [fadeOut, setFadeOut] = useState(false);
   const [open, setOpen] = useState(false);
@@ -111,7 +111,7 @@ export default function Home() {
     };
 
     if (document.readyState === "complete") {
-      setShowLoading(false);
+      setTimeout(() => setShowLoading(false), 0);
     } else {
       window.addEventListener("load", handleLoad);
       return () => window.removeEventListener("load", handleLoad);
