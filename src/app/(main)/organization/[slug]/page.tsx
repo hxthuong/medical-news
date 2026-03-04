@@ -61,7 +61,10 @@ export default function OrganizationPage() {
 
   const nums = data?.phantrang?.match(/\d+/g);
   const totalPage = Number(nums ? nums[nums.length - 1] : 1);
-  const parentLink = "";
+  const parentLink =
+    data?.parent?.ID === Number(itemType[locale as keyof typeof itemType])
+      ? ""
+      : `/${data?.parent?.ID}`;
   const link = !data?.parent ? "/" : `/organization${parentLink}`;
   const item = findItemByID(menu, Number(id));
   const lastItem = !findItemByID(menu, Number(id))?.children?.find(
