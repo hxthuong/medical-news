@@ -61,6 +61,7 @@ export default function OrganizationPage() {
   const nums = data?.phantrang?.match(/\d+/g);
   const totalPage = Number(nums ? nums[nums.length - 1] : 1);
   const parentLink =
+    mapping.MENU["/organization"][locale] &&
     data?.parent?.ID === Number(mapping.MENU["/organization"][locale])
       ? ""
       : `/${data?.parent?.ID}`;

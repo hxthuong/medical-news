@@ -71,6 +71,7 @@ export default function IntroductionPage() {
   const nums = data?.phantrang?.match(/\d+/g);
   const totalPage = Number(nums ? nums[nums.length - 1] : 1);
   const parentLink =
+    mapping.MENU["/introduction"][locale] &&
     data?.parent?.ID === Number(mapping.MENU["/introduction"][locale])
       ? ""
       : `/${data?.parent?.ID}`;

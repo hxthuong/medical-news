@@ -68,6 +68,7 @@ export default function NewsPage() {
   const nums = data?.phantrang?.match(/\d+/g);
   const totalPage = Number(nums ? nums[nums.length - 1] : 1);
   const parentLink =
+    mapping.MENU["/news"][locale] &&
     data?.parent?.ID === Number(mapping.MENU["/news"][locale])
       ? ""
       : `/${data?.parent?.ID}`;
