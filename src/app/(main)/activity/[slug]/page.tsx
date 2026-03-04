@@ -68,7 +68,7 @@ export default function ActivityPage() {
   const nums = data?.phantrang?.match(/\d+/g);
   const totalPage = Number(nums ? nums[nums.length - 1] : 1);
   const parentLink =
-    data?.parent?.ID === Number(mapping.MENU["/activity"]?.[locale] ?? 0)
+    data?.parent?.ID === Number((mapping.MENU["/activity"] ?? {})[locale] ?? 0)
       ? ""
       : `/${data?.parent?.ID}`;
   const link = !data?.parent ? "/" : `/activity${parentLink}`;
