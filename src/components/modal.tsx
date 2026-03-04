@@ -172,7 +172,7 @@ export default function Modal({
               onClick={() => {
                 if (item.children) {
                   setStack([...stack, currentId || "root"]);
-                  setCurrentId(item.id);
+                  setCurrentId(item.id.toString());
                 } else if (item.href) {
                   onClose();
                 }
