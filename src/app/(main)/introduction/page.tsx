@@ -15,7 +15,8 @@ export default function IntroductionListPage() {
   const { locale, setHeader } = useHeader();
   const [data, setData] = useState<PageProps>();
   const { menuConfig } = useConfig(locale);
-  const id = mapping.MENU["/introduction"][locale];
+  const itemType = mapping.MENU["/introduction"];
+  const id = itemType[locale as keyof typeof itemType];
   const item = buildMenuTree(
     menuConfig?.filter((x) => x.ITOP === 1) || [],
     locale,

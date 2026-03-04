@@ -11,7 +11,13 @@ export default function GalleryPage() {
   const menu = buildMenuTree(
     menuConfig?.filter((x) => x.ILEFT === 1) || [],
     locale,
-  ).find((x) => x.id === mapping.MENU["/organization"][locale])?.children;
+  ).find(
+    (x) =>
+      x.id ===
+      mapping.MENU["/organization"][
+        locale as keyof (typeof mapping.MENU)["/organization"]
+      ],
+  )?.children;
 
   const slides = useMemo(() => {
     return (flattenMenu(menu ?? []) || [])

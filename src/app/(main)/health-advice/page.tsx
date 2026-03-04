@@ -15,7 +15,8 @@ export default function HealthAdviceListPage() {
   const { locale, setHeader } = useHeader();
   const [data, setData] = useState<PageProps>();
   const { menuConfig } = useConfig(locale);
-  const id = mapping.MENU["/health-advice"][locale];
+  const itemType = mapping.MENU["/health-advice"];
+  const id = itemType[locale as keyof typeof itemType];
   const item = buildMenuTree(
     menuConfig?.filter((x) => x.ITOP === 1) || [],
     locale,

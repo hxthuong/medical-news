@@ -24,9 +24,10 @@ export default function OrganizationPage() {
   const id = params.slug;
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
+  const itemType = mapping.MENU["/organization"];
   const menu =
     buildMenuTree(menuConfig?.filter((x) => x.ILEFT === 1) || [], locale).find(
-      (x) => x.id === mapping.MENU["/organization"][locale],
+      (x) => x.id === itemType[locale as keyof typeof itemType],
     )?.children || [];
 
   useEffect(() => {

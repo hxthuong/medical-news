@@ -15,7 +15,8 @@ export default function ActivityListPage() {
   const { locale, setHeader } = useHeader();
   const [data, setData] = useState<PageProps>();
   const { menuConfig } = useConfig(locale);
-  const id = mapping.MENU["/activity"][locale];
+  const itemType = mapping.MENU["/activity"];
+  const id = itemType[locale as keyof typeof itemType];
   const item = buildMenuTree(
     menuConfig?.filter((x) => x.ITOP === 1) || [],
     locale,

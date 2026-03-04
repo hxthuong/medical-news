@@ -45,7 +45,7 @@ export default function Home() {
   useEffect(() => {
     setHeader({
       images: ["/images/banner1.jpg", "/images/banner2.png"],
-      title: mapping.slogan[locale],
+      title: mapping.slogan[locale as keyof typeof mapping.slogan],
       children: (
         <div className="flex justify-center space-x-6 mt-4">
           <Button

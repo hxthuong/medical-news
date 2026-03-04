@@ -15,7 +15,8 @@ export default function NewsListPage() {
   const { locale, setHeader } = useHeader();
   const [data, setData] = useState<PageProps>();
   const { menuConfig } = useConfig(locale);
-  const id = mapping.MENU["/news"][locale];
+  const itemType = mapping.MENU["/news"];
+  const id = itemType[locale as keyof typeof itemType];
   const item = buildMenuTree(
     menuConfig?.filter((x) => x.ITOP === 1) || [],
     locale,
