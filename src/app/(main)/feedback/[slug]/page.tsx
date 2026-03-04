@@ -25,7 +25,9 @@ export default function FeedbackPage() {
         return JSON.parse(text);
       })
       .then((res) => {
-        const item = res?.phanhoi.find((x) => x.ID === Number(id));
+        const item = res?.phanhoi.find(
+          (x: FeedbackProps) => x.ID === Number(id),
+        );
         setData(item);
       })
       .catch(console.error);
