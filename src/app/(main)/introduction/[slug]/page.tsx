@@ -70,11 +70,7 @@ export default function IntroductionPage() {
 
   const nums = data?.phantrang?.match(/\d+/g);
   const totalPage = Number(nums ? nums[nums.length - 1] : 1);
-  const parentLink =
-    data?.parent?.ID ===
-    Number((mapping.MENU["/introduction"] ?? {})[locale] ?? 0)
-      ? ""
-      : `/${data?.parent?.ID}`;
+  const parentLink = "";
   const link = !data?.parent ? "/" : `/introduction${parentLink}`;
 
   const createPageLink = (page: number) =>
