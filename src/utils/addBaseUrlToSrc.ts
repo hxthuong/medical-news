@@ -47,7 +47,8 @@ export default function addBaseUrlToSrc(
         if (/style\s*=\s*"/i.test(attributes)) {
           attributes = attributes.replace(
             /style\s*=\s*"(.*?)"/i,
-            (m, oldStyle) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (m: any, oldStyle: any) => {
               return `style="${oldStyle}; ${styleFlex}"`;
             },
           );

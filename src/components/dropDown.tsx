@@ -35,7 +35,7 @@ export default function Dropdown({
      Mount (SSR safe)
   ============================== */
   useEffect(() => {
-    setMounted(true);
+    setTimeout(() => setMounted(true), 0);
   }, []);
 
   /* =============================
@@ -46,9 +46,18 @@ export default function Dropdown({
 
     if (multiple) {
       const values = Array.isArray(value) ? value.map(String) : [];
-      setMultiSelected(options.filter((o) => values.includes(String(o.id))));
+      setTimeout(
+        () =>
+          setMultiSelected(
+            options.filter((o) => values.includes(String(o.id))),
+          ),
+        0,
+      );
     } else {
-      setSingleSelected(options.find((o) => o.id === value) ?? null);
+      setTimeout(
+        () => setSingleSelected(options.find((o) => o.id === value) ?? null),
+        0,
+      );
     }
   }, [value, options, multiple]);
 

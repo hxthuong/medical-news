@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
-import { ConfigProps, VisitProps } from "@/types/config";
 import { useConfig } from "@/hooks/useConfig";
 
 export default function useTranslate(lang: string = "") {
-  const [data, setData] = useState<ConfigProps | null>(null);
   const { keyword, visits, infoSite } = useConfig(lang);
 
   const detailKey = keyword?.find((x) => x.TUKHOA === "XEM_CHI_TIET")?.NOIDUNG;

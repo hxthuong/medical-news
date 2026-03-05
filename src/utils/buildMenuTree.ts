@@ -50,7 +50,7 @@ export function buildMenuTree(
       let currentKey = inheritedKey;
 
       if (level === 0) {
-        const selfKey = findMenuKeyByValue(Number(node.id), locale as any);
+        const selfKey = findMenuKeyByValue(Number(node.id), locale);
         currentKey = selfKey ?? undefined;
       }
 

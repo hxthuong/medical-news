@@ -54,9 +54,10 @@ export function getMenuIds(menuKey: MenuKey, locale: Locale) {
   return Array.isArray(menuValue) ? menuValue : [menuValue];
 }
 
-export function findMenuKeyByValue(value: number, locale: Locale) {
+export function findMenuKeyByValue(value: number, locale: string) {
   return (Object.keys(mapping.MENU) as MenuKey[]).find((key) => {
-    const ids = mapping.MENU[key][locale];
+    const list = mapping.MENU[key];
+    const ids = list[locale as keyof typeof list];
     const arr = Array.isArray(ids) ? ids : [ids];
     return arr.includes(value);
   });

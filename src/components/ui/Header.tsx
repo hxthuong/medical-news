@@ -174,9 +174,14 @@ export default function Header() {
               options={countries}
               width={60}
               value={locale}
-              onSelect={(country: Option) =>
-                handleSelect(country?.id as string)
-              }
+              onSelect={(value) => {
+                if (Array.isArray(value)) {
+                  // Nếu dropdown support multi-select
+                  handleSelect(value[0]?.id as string);
+                } else {
+                  handleSelect(value?.id as string);
+                }
+              }}
             />
           </div>
         </div>

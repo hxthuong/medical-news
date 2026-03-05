@@ -6,7 +6,7 @@ export type MenuProps = {
   href?: string;
   level?: number;
   icon?: React.ReactNode;
-  image?: string;
+  image?: string | null;
   type?: string;
   children?: MenuProps[];
 };

@@ -45,10 +45,10 @@ export default function Modal({
     let timeout: NodeJS.Timeout;
 
     if (openModal) {
-      setVisible(true);
+      setTimeout(() => setVisible(true), 0);
       timeout = setTimeout(() => setSlideIn(true), 20);
     } else {
-      setSlideIn(false);
+      setTimeout(() => setSlideIn(false), 0);
       timeout = setTimeout(() => setVisible(false), 300);
     }
 

@@ -1,7 +1,11 @@
 "use client";
 
+import Carousel from "@/components/carousel";
+import CustomImage from "@/components/image";
 import Sidebar from "@/components/ui/Sidebar";
+import { listLogo } from "@/config/logos";
 import { useScreen } from "@/hooks/useScreen";
+import Link from "next/link";
 
 export default function MainLayout({
   children,
@@ -17,7 +21,7 @@ export default function MainLayout({
         {width >= 1024 && <Sidebar />}
       </div>
       {/* List logo */}
-      {/* <div className="space-y-10 mx-10 flex items-stretch space-x-4 h-20 mt-10">
+      <div className="space-y-10 mx-10 flex items-stretch space-x-4 h-20 mt-10">
         <Carousel delay={3000}>
           {listLogo.map((slide, index) => (
             <div className="embla__slide mr-4" key={index}>
@@ -36,7 +40,7 @@ export default function MainLayout({
             </div>
           ))}
         </Carousel>
-      </div> */}
+      </div>
     </div>
   );
 }
