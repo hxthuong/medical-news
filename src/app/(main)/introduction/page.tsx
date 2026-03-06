@@ -7,20 +7,16 @@ import { mapping } from "@/config/mapping";
 import { Briefcase, ChevronRight } from "lucide-react";
 import addBaseUrlToSrc from "@/utils/addBaseUrlToSrc";
 import { ListItem } from "@/components/ui/ListItem";
-import { useConfig } from "@/hooks/useConfig";
-import { buildMenuTree } from "@/utils/buildMenuTree";
 import Loading from "@/components/loading";
+import { useMenu } from "@/hooks/useMenu";
 
 export default function IntroductionListPage() {
   const { locale, setHeader } = useHeader();
   const [data, setData] = useState<PageProps>();
-  const { menuConfig } = useConfig(locale);
   const itemType = mapping.MENU["/introduction"];
   const id = itemType[locale as keyof typeof itemType];
-  const item = buildMenuTree(
-    menuConfig?.filter((x) => x.ITOP === 1) || [],
-    locale,
-  ).find((x) => x.id === id);
+  const { menu } = useMenu("top", locale);
+  const item = menu?.find((x) => x.id === id);
 
   useEffect(() => {
     fetch(`/api/news?ID=${id}&page=1`)
@@ -69,7 +65,7 @@ export default function IntroductionListPage() {
         <ul className="flex items-center space-x-2 text-lg">
           <li>
             <Link
-              href={`${locale === "eng" ? "?lang=eng" : "/"}`}
+              href={`${locale === "eng" ? "/?lang=eng" : "/"}`}
               className="text-blue-600 hover:underline"
             >
               {locale === "eng" ? "Home" : "Trang chủ"}

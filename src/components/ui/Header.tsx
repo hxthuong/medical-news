@@ -11,7 +11,6 @@ import Dropdown from "@/components/dropDown";
 import { useEffect, useState } from "react";
 import { buildMenuTree } from "@/utils/buildMenuTree";
 import { MenuProps } from "@/types/menu";
-import { Option } from "@/types/dropdown";
 import MenuItem from "@/components/ui/MenuItem";
 import Modal from "@/components/modal";
 import { Button } from "@/components/button";
@@ -19,6 +18,7 @@ import { setLocale } from "@/app/actions/set-locale";
 import { clearData } from "@/utils/secureStorage";
 import { baseUrl } from "@/utils/addBaseUrlToSrc";
 import { useSearchParams } from "next/navigation";
+import { setTitle } from "@/app/actions/set-title";
 const robotoSlab = localFont({
   src: [
     { path: "../../fonts/RobotoSlab-Regular.ttf", weight: "400" },
@@ -34,6 +34,7 @@ export default function Header() {
     images,
     imageHeight,
     title,
+    subTitle,
     size,
     description,
     children,
@@ -62,26 +63,31 @@ export default function Header() {
   const [visibleFixed, setVisibleFixed] = useState(false);
 
   const searchParams = useSearchParams();
+  const lang = searchParams.get("lang") || "vi";
 
   useEffect(() => {
-    const lang = searchParams.get("lang") || "vi";
+    if (!locale) return;
 
-    if (lang && lang !== locale) {
-      // Gọi server action set cookie
-      setLocale(lang)
-        .then(() => {
-          clearData("CONFIG_DATA"); // xóa cache config nếu cần
-          // reload lại trang để áp dụng locale mới
-          window.location.href =
-            lang === "eng" ? `${baseUrl}?lang=eng` : baseUrl;
-        })
-        .catch(console.error);
+    if (lang !== locale) {
+      setLocale(lang).then(() => {
+        clearData("CONFIG_DATA");
+        window.location.href = lang === "eng" ? `${baseUrl}?lang=eng` : baseUrl;
+      });
     }
-  }, [searchParams]);
+  }, [locale, lang]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [config]);
+    if (!lang) return;
+    const defaultTitle: Record<string, string> = {
+      vi: "Bệnh viện Trung ương Huế",
+      eng: "Hue Central Hospital",
+    };
+    setTitle(title || defaultTitle[lang]).catch(console.error);
+  }, [title, lang]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -318,7 +324,7 @@ export default function Header() {
                   fontSize: size || 36,
                 }}
               >
-                {title}
+                {title || subTitle}
               </h3>
               {description && (
                 <h6

@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/button";
 import Carousel from "@/components/carousel";
+import { GalleryBox } from "@/components/gallery";
 import CustomImage from "@/components/image";
 import Loading from "@/components/loading";
 import Modal from "@/components/modal";
@@ -42,10 +43,13 @@ export default function Home() {
   const [emailBooking, setEmailBooking] = useState("");
   const [contentBooking, setContentBooking] = useState("");
 
+  const [currentImage, setCurrentImage] = useState(0);
+  const [openImage, setOpenImage] = useState(false);
+
   useEffect(() => {
     setHeader({
       images: ["/images/banner1.jpg", "/images/banner2.png"],
-      title: mapping.slogan[locale as keyof typeof mapping.slogan],
+      subTitle: mapping.slogan[locale as keyof typeof mapping.slogan],
       children: (
         <div className="flex justify-center space-x-6 mt-4">
           <Button
@@ -677,11 +681,22 @@ export default function Home() {
                             className="object-contain w-full h-full"
                             // priority={index === 0}
                             onLoad={() => setShowLoading(false)}
+                            onClick={() => {
+                              setCurrentImage(index);
+                              setOpenImage(true);
+                            }}
                           />
                         </div>
                       </div>
                     ))}
                   </Carousel>
+                  <GalleryBox
+                    slides={letters}
+                    open={openImage}
+                    setOpen={setOpenImage}
+                    index={currentImage}
+                    setIndex={setCurrentImage}
+                  />
                 </div>
                 <div className="text-center">
                   <Button

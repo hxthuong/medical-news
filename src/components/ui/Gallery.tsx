@@ -4,14 +4,12 @@ import Gallery from "../gallery";
 import { buildMenuTree, flattenMenu } from "@/utils/buildMenuTree";
 import { mapping } from "@/config/mapping";
 import { useMemo } from "react";
+import { useMenu } from "@/hooks/useMenu";
 
 export default function GalleryPage() {
-  const { locale, setHeader } = useHeader();
-  const { menuConfig } = useConfig(locale);
-  const menu = buildMenuTree(
-    menuConfig?.filter((x) => x.ILEFT === 1) || [],
-    locale,
-  ).find(
+  const { locale } = useHeader();
+  const { menu: menuConfig } = useMenu("left", locale);
+  const menu = menuConfig?.find(
     (x) =>
       x.id ===
       mapping.MENU["/organization"][

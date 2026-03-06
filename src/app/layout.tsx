@@ -36,8 +36,11 @@ export async function generateMetadata(): Promise<Metadata> {
     eng: "Hue Central Hospital",
   };
 
+  const title =
+    cookieStore.get("title")?.value || (titles[locale] ?? titles.vi);
+
   return {
-    title: titles[locale] ?? titles.vi,
+    title: title,
     description: description[locale] ?? description.vi,
   };
 }

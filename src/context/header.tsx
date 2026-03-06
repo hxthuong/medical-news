@@ -17,6 +17,7 @@ type HeaderState = {
   images?: string[] | [];
   imageHeight?: number;
   title?: string;
+  subTitle?: string;
   size?: number;
   description?: string;
   locale?: string;
@@ -32,6 +33,7 @@ const defaultHeader = {
   images: [],
   imageHeight: 500,
   title: "",
+  subTitle: "",
   size: 36,
   description: "",
   locale: "vi",

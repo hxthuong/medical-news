@@ -27,8 +27,8 @@ export default function Modal({
 }: ModalProps) {
   const [visible, setVisible] = useState(false); // controls mounting
   const [slideIn, setSlideIn] = useState(false); // controls slide transform
-  const [currentId, setCurrentId] = useState<string | null>(null);
-  const [stack, setStack] = useState<string[]>([]);
+  const [currentId, setCurrentId] = useState<number | null>(null);
+  const [stack, setStack] = useState<number[]>([]);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const hasOverlay = !className.includes("no-overlay");
   const hasClickOutside = className.includes("clickout");
@@ -97,7 +97,7 @@ export default function Modal({
   const handleBack = () => {
     const prev = stack.pop()!;
     setStack([...stack]);
-    setCurrentId(prev === "root" ? null : prev);
+    setCurrentId(prev === null ? null : prev);
   };
 
   if (!visible) return null;
@@ -170,11 +170,11 @@ export default function Modal({
               key={item.id}
               className="p-2 rounded hover:bg-blue-100 text-lg flex justify-between cursor-pointer"
               onClick={() => {
-                if (item.children) {
-                  setStack([...stack, currentId || "root"]);
-                  setCurrentId(item.id.toString());
+                if (item.children && item.children.length > 0) {
+                  setStack([...stack, Number(currentId) ?? null]);
+                  setCurrentId(Number(item.id));
                 } else if (item.href) {
-                  onClose();
+                  handleClose();
                 }
               }}
             >

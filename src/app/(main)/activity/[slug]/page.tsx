@@ -22,16 +22,21 @@ export default function ActivityPage() {
   const page = Number(searchParams.get("page")) || 1;
 
   useEffect(() => {
-    if (locale) {
-      fetch(`/api/news?lang=${locale}&ID=${id}&page=${page}`)
-        .then(async (res) => {
-          const text = await res.text();
-          if (!text) throw new Error("Empty response from server");
-          return JSON.parse(text);
-        })
-        .then(setData)
-        .catch(console.error);
-    }
+    if (!locale || !id) return;
+
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `/api/news?lang=${locale}&ID=${id}&page=${page}`,
+        );
+        const json = await res.json();
+        setData(json);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
   }, [locale, id, page]);
 
   useEffect(() => {

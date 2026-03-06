@@ -1,18 +1,13 @@
 import { useHeader } from "@/context/header";
-import { useConfig } from "@/hooks/useConfig";
+import { useMenu } from "@/hooks/useMenu";
 import { MenuProps } from "@/types/menu";
-import { buildMenuTree } from "@/utils/buildMenuTree";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export default function Sidebar() {
   const { locale } = useHeader();
-  const { loading, menuConfig } = useConfig(locale);
-  const menu = buildMenuTree(
-    menuConfig?.filter((x) => x.ILEFT === 1) || [],
-    locale,
-  );
+  const { menu } = useMenu("left", locale);
 
   menu.forEach((item) => {
     if (item.id === 20236) {

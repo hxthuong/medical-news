@@ -5,19 +5,19 @@ import { PageProps } from "@/types/page";
 import { useEffect, useState } from "react";
 import Loading from "@/components/loading";
 import Link from "next/link";
-import { Building, ChevronRight, ChevronsRight } from "lucide-react";
+import { Building, ChevronRight } from "lucide-react";
 import CustomImage from "@/components/image";
 import { getImageSrc, srcImage } from "@/utils/addBaseUrlToSrc";
 import Pagination from "@/components/pagination";
 import PageDetail from "@/components/ui/PageDetail";
-import findItemByID, { buildMenuTree } from "@/utils/buildMenuTree";
-import { useConfig } from "@/hooks/useConfig";
+import findItemByID from "@/utils/buildMenuTree";
 import { mapping } from "@/config/mapping";
 import { ListItem } from "@/components/ui/ListItem";
+import { useMenu } from "@/hooks/useMenu";
 
 export default function OrganizationPage() {
   const { locale, setHeader } = useHeader();
-  const { menuConfig } = useConfig(locale);
+  const { menu } = useMenu("left", locale);
   const [data, setData] = useState<PageProps>();
   const router = useRouter();
   const params = useParams();
@@ -25,10 +25,6 @@ export default function OrganizationPage() {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
   const itemType = mapping.MENU["/organization"];
-  const menu =
-    buildMenuTree(menuConfig?.filter((x) => x.ILEFT === 1) || [], locale).find(
-      (x) => x.id === itemType[locale as keyof typeof itemType],
-    )?.children || [];
 
   useEffect(() => {
     if (locale) {

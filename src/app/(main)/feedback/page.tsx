@@ -65,7 +65,7 @@ export default function FeedbackListPage() {
         <ul className="flex items-center space-x-2 text-lg">
           <li>
             <Link
-              href={`${locale === "eng" ? "?lang=eng" : "/"}`}
+              href={`${locale === "eng" ? "/?lang=eng" : "/"}`}
               className="text-blue-600 hover:underline"
             >
               {locale === "eng" ? "Home" : "Trang chủ"}

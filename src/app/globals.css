@@ -313,6 +313,8 @@ table > tbody > tr:has(td .row-parent) {
 @media (max-width: 768px) {
   .news-container {
     flex-wrap: wrap;
+    margin: 0;
+    padding: 0 16px 24px 16px;
   }
 
   .news-container > video {
