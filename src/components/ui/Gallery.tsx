@@ -28,5 +28,5 @@ export default function GalleryPage() {
       );
   }, [menu]);
 
-  return <Gallery slides={slides} />;
+  return <Gallery slides={slides} height={500} />;
 }

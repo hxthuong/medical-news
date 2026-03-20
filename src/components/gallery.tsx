@@ -13,7 +13,13 @@ import "yet-another-react-lightbox/plugins/captions.css";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function Gallery({ slides }: { slides: SlideImage[] }) {
+export default function Gallery({
+  slides,
+  height,
+}: {
+  slides: SlideImage[];
+  height?: number;
+}) {
   const [current, setCurrent] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -74,6 +80,7 @@ export default function Gallery({ slides }: { slides: SlideImage[] }) {
         <div
           onClick={() => setOpen(true)}
           className="relative w-full aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer"
+          style={{ height }}
         >
           {slides.map((img, idx) => (
             <Image
