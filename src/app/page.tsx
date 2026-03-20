@@ -217,29 +217,24 @@ export default function Home() {
                 {newsTitle}
               </h3>
               {data?.news &&
-                data?.news.map((slide, index) => {
-                  console.log(
-                    `/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`,
-                  );
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-row p-3 rounded-2xl items-start hover:cursor-pointer hover:bg-gray-100"
-                    >
-                      <CustomImage
-                        src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
-                        alt={slide.CTIEUDE}
-                        width={100}
-                        height={75}
-                        className="rounded-xl min-h-18.75"
-                        onLoad={() => setShowLoading(false)}
-                      />
-                      <Link href="/" className="text-blue-800 ml-3">
-                        {slide.CTIEUDE}
-                      </Link>
-                    </div>
-                  );
-                })}
+                data?.news.map((slide, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-row p-3 rounded-2xl items-start hover:cursor-pointer hover:bg-gray-100"
+                  >
+                    <CustomImage
+                      src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                      alt={slide.CTIEUDE}
+                      width={100}
+                      height={75}
+                      className="rounded-xl min-h-18.75"
+                      onLoad={() => setShowLoading(false)}
+                    />
+                    <Link href="/" className="text-blue-800 ml-3">
+                      {slide.CTIEUDE}
+                    </Link>
+                  </div>
+                ))}
               <Link
                 href={`/news/120`}
                 className="text-blue-700 ml-3 flex flex-row items-center space-x-1 justify-end mt-3 hover:text-blue-300"
