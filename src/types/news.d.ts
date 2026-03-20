@@ -1,0 +1,22 @@
+export type NewsProps = {
+  ID: string | number;
+  IPARENT?: string | number;
+  CMETAKEY: string;
+  CNOIDUNG?: string | null;
+  CTYPE?: string;
+  ID_NGONNGU?: number;
+  CMETAKEY?: string;
+  CMETADES?: string;
+  CHINHANH?: string;
+  DDATE?: string;
+  IHOT?: 0 | 1;
+  ITOP?: 0 | 1;
+  IBOTTOM?: 0 | 1;
+  ILEFT?: 0 | 1;
+  IRIGHT?: 0 | 1;
+  IHIENTHI?: 0 | 1;
+  IDELETE?: 0 | 1;
+  IVITRI?: number;
+  DDATE?: string;
+  children?: NewsProps[];
+};
