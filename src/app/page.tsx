@@ -223,7 +223,8 @@ export default function Home() {
                     className="flex flex-row p-3 rounded-2xl items-start hover:cursor-pointer hover:bg-gray-100"
                   >
                     <CustomImage
-                      src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                      // src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                      src={encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}
                       alt={slide.CTIEUDE}
                       width={100}
                       height={75}
@@ -289,7 +290,10 @@ export default function Home() {
                           onClick={() => router.push(`/activity/${slide.ID}`)}
                         >
                           <CustomImage
-                            src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                            // src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                            src={encodeURIComponent(
+                              srcImage(slide.CHINHANH ?? ""),
+                            )}
                             alt={slide.CTIEUDE}
                             className={`rounded-xl object-cover ${
                               index === 0 ? "w-full h-75" : "w-25 h-18.75"
@@ -336,7 +340,10 @@ export default function Home() {
                           onClick={() => router.push(`/news/${slide.ID}`)}
                         >
                           <CustomImage
-                            src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                            // src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                            src={encodeURIComponent(
+                              srcImage(slide.CHINHANH ?? ""),
+                            )}
                             alt={slide.CTIEUDE}
                             className={`rounded-xl object-cover ${
                               index === 0 ? "w-full h-75" : "w-25 h-18.75"
@@ -383,7 +390,10 @@ export default function Home() {
                           onClick={() => router.push(`/activity/${slide.ID}`)}
                         >
                           <CustomImage
-                            src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                            // src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                            src={encodeURIComponent(
+                              srcImage(slide.CHINHANH ?? ""),
+                            )}
                             alt={slide.CTIEUDE}
                             className={`rounded-xl object-cover ${
                               index === 0 ? "w-full h-75" : "w-25 h-18.75"
@@ -435,7 +445,8 @@ export default function Home() {
                         onClick={() => router.push(`/activity/${id}`)}
                       >
                         <CustomImage
-                          src={`/api/image?url=${encodeURIComponent(srcImage(slide.ICON ?? ""))}`}
+                          // src={`/api/image?url=${encodeURIComponent(srcImage(slide.ICON ?? ""))}`}
+                          src={encodeURIComponent(srcImage(slide.ICON ?? ""))}
                           alt={slide.TIEUDE}
                           width={230}
                           height={255}
@@ -472,7 +483,8 @@ export default function Home() {
                         onClick={() => router.push(`/activity/${id}`)}
                       >
                         <CustomImage
-                          src={`/api/image?url=${encodeURIComponent(srcImage(slide.ICON ?? ""))}`}
+                          // src={`/api/image?url=${encodeURIComponent(srcImage(slide.ICON ?? ""))}`}
+                          src={encodeURIComponent(srcImage(slide.ICON ?? ""))}
                           alt={slide.TIEUDE}
                           width={230}
                           height={255}
@@ -509,7 +521,8 @@ export default function Home() {
                       className="flex flex-row p-4 border border-gray-200 rounded-xl shadow-xl bg-white items-start"
                     >
                       <CustomImage
-                        src={`/api/image?url=${encodeURIComponent(srcImage(slide.ICON ?? ""))}`}
+                        // src={`/api/image?url=${encodeURIComponent(srcImage(slide.ICON ?? ""))}`}
+                        src={encodeURIComponent(srcImage(slide.ICON ?? ""))}
                         alt={slide.TIEUDE}
                         width={120}
                         height={120}
@@ -728,7 +741,10 @@ export default function Home() {
                       <div className="embla__slide__inner">
                         <Link href={slide.CLINK || "/"} target="_blank">
                           <CustomImage
-                            src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                            // src={`/api/image?url=${encodeURIComponent(srcImage(slide.CHINHANH ?? ""))}`}
+                            src={encodeURIComponent(
+                              srcImage(slide.CHINHANH ?? ""),
+                            )}
                             alt={slide.CTEN || `Slide ${index + 1}`}
                             width={300}
                             height={80}
@@ -755,7 +771,8 @@ export default function Home() {
             >
               <Link href={data?.popup?.LIENKET ?? "/"} target="_blank">
                 <CustomImage
-                  src={`/api/image?url=${encodeURIComponent(srcImage(data?.popup?.HINHANH ?? ""))}`}
+                  // src={`/api/image?url=${encodeURIComponent(srcImage(data?.popup?.HINHANH ?? ""))}`}
+                  src={encodeURIComponent(srcImage(data?.popup?.HINHANH ?? ""))}
                   alt={data?.popup?.TEN}
                   fill
                   // priority={index === 0}
