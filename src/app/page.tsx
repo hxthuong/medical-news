@@ -736,9 +736,7 @@ export default function Home() {
                         <Link href={slide.CLINK || "/"} target="_blank">
                           <CustomImage
                             // src={`/api/image?url=${srcImage(slide.CHINHANH ?? "")}`}
-                            src={encodeURIComponent(
-                              srcImage(slide.CHINHANH ?? ""),
-                            )}
+                            src={srcImage(slide.CHINHANH ?? "")}
                             alt={slide.CTEN || `Slide ${index + 1}`}
                             width={300}
                             height={80}
